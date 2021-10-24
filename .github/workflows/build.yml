@@ -20,5 +20,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet }}
+      - name: Restore tools
+        run: dotnet tool restore
       - name: Run build
         run: dotnet run build
