@@ -6,7 +6,11 @@ module Template =
 
     [<RequireQualifiedAccess>]
     module DotNet =
-        let restore project = dotnet [ "restore"; project ]
+        let restore project =
+            job {
+                dotnet [ "tool"; "restore" ]
+                dotnet [ "restore"; project ]
+            }
 
         let build project =
             dotnet [ "build"
