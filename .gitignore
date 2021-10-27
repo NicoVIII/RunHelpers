@@ -5,3 +5,6 @@ obj/
 # Ionide
 .ionide/
 .fake/
+
+# Packed library
+*.nupkg

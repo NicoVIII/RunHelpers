@@ -6,18 +6,48 @@ module Template =
 
     [<RequireQualifiedAccess>]
     module DotNet =
+        type Config =
+            | Debug
+            | Release
+
+        [<RequireQualifiedAccess>]
+        module Config =
+            let toString =
+                function
+                | Debug -> "Debug"
+                | Release -> "Release"
+
         let restore project =
             job {
                 dotnet [ "tool"; "restore" ]
                 dotnet [ "restore"; project ]
             }
 
-        let build project =
+        let build project config =
             dotnet [ "build"
                      project
+                     "-c"
+                     Config.toString config
                      "--no-restore" ]
 
         let run project = dotnet [ "run"; "--project"; project ]
+
+        [<RequireQualifiedAccess>]
+        module Paket =
+            open System.IO
+
+            let pack (project: string) version =
+                let template =
+                    Path.GetDirectoryName project
+                    |> (fun folder -> Path.Combine(folder, "paket.template"))
+
+                dotnet [ "paket"
+                         "pack"
+                         "."
+                         "--template"
+                         template
+                         "--version"
+                         version ]
 
     [<RequireQualifiedAccess>]
     module Npm =
