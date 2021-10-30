@@ -9,7 +9,9 @@
     <Authors>NicoVIII</Authors>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Core.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="FakeHelpers.fs" />
+    <Compile Include="Builder.fs" />
     <Compile Include="Shortcut.fs" />
     <Compile Include="Template.fs" />
   </ItemGroup>

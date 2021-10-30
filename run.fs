@@ -9,8 +9,7 @@ module Task =
 
     let build = Template.DotNet.build Config.project
 
-    let pack =
-        Template.DotNet.Paket.pack Config.project
+    let pack = Template.Paket.pack Config.project
 
 module Command =
     let restore () = Task.restore ()
@@ -37,6 +36,11 @@ let main args =
         | []
         | [ "build" ] -> Command.build ()
         | [ "pack"; version ] -> Command.pack version
+        // Missing args cases
+        | [ "pack" ] ->
+            let msg = [ "Usage: dotnet run pack <version>" ]
+            Error(1, msg)
+        // Default error case
         | _ ->
             let msg =
                 [ "Usage: dotnet run [<command>]"

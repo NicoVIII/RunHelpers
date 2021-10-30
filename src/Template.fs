@@ -32,22 +32,21 @@ module Template =
 
         let run project = dotnet [ "run"; "--project"; project ]
 
-        [<RequireQualifiedAccess>]
-        module Paket =
-            open System.IO
+    [<RequireQualifiedAccess>]
+    module Paket =
+        open System.IO
 
-            let pack (project: string) version =
-                let template =
-                    Path.GetDirectoryName project
-                    |> (fun folder -> Path.Combine(folder, "paket.template"))
+        let pack (project: string) version =
+            let template =
+                Path.GetDirectoryName project
+                |> (fun folder -> Path.Combine(folder, "paket.template"))
 
-                dotnet [ "paket"
-                         "pack"
-                         "."
-                         "--template"
-                         template
-                         "--version"
-                         version ]
+            paket [ "pack"
+                    "."
+                    "--template"
+                    template
+                    "--version"
+                    version ]
 
     [<RequireQualifiedAccess>]
     module Npm =

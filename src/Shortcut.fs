@@ -2,13 +2,17 @@ namespace RunHelpers
 
 module BasicShortcuts =
     module Internal =
-        open FakeExtensions
+        open Fake.Core
+        open FakeHelpers
 
-        let inline buildBasicCommand cmd = CreateProcess.create cmd >> Proc.run
+        let inline basicCommand cmd =
+            CreateProcess.fromRawCommand cmd >> Proc.run
 
-    let dotnet args =
-        Internal.buildBasicCommand "dotnet" args
+    let dotnet args = Internal.basicCommand "dotnet" args
 
-    let npm args = Internal.buildBasicCommand "npm" args
+    let paket args =
+        Internal.basicCommand "dotnet" [ "paket"; yield! args ]
 
-    let pnpm args = Internal.buildBasicCommand "pnpm" args
+    let npm args = Internal.basicCommand "npm" args
+
+    let pnpm args = Internal.basicCommand "pnpm" args
