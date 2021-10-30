@@ -15,6 +15,7 @@
     <Compile Include="Builder.fs" />
     <Compile Include="Shortcut.fs" />
     <Compile Include="Template.fs" />
+    <Compile Include="Watch.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
