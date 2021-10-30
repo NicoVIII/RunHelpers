@@ -17,11 +17,9 @@ module Template =
                 | Debug -> "Debug"
                 | Release -> "Release"
 
-        let restore project =
-            job {
-                dotnet [ "tool"; "restore" ]
-                dotnet [ "restore"; project ]
-            }
+        let toolRestore () = dotnet [ "tool"; "restore" ]
+
+        let restore project = dotnet [ "restore"; project ]
 
         let build project config =
             dotnet [ "build"
