@@ -6,7 +6,8 @@ module BasicShortcuts =
         open FakeHelpers
 
         let inline basicCommand cmd =
-            CreateProcess.fromRawCommand cmd >> Proc.run
+            CreateProcess.fromRawCommand cmd
+            >> Proc.runAsJob Constant.errorExitCode
 
     let dotnet args = Internal.basicCommand "dotnet" args
 
