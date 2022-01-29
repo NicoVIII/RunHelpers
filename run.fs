@@ -1,6 +1,7 @@
 open System
 
 open RunHelpers
+open RunHelpers.Templates
 open RunHelpers.Watch
 
 [<RequireQualifiedAccess>]
@@ -8,13 +9,8 @@ module Config =
     let project = "./src/RunHelpers.fsproj"
 
 module Task =
-    let restore () =
-        job {
-            Template.DotNet.toolRestore ()
-            Template.DotNet.restore Config.project
-        }
-
-    let build = Template.DotNet.build Config.project
+    let restore () = DotNet.restoreWithTools Config.project
+    let build = DotNet.build Config.project
 
     let watch () =
         let options =
@@ -22,53 +18,39 @@ module Task =
             |> WatcherOptions.excludeFolders [ "bin"
                                                "obj" ]
 
-        use watcher =
-            setupWatcher options [ "src" ] (fun () -> build Template.DotNet.Config.Debug)
+        use watcher = setupWatcher options [ "src" ] (fun () -> build DotNetConfig.Debug)
 
         printfn "Waiting for changes... (enter for exit)"
         Console.ReadLine() |> ignore
         Ok
 
-    let pack = Template.Paket.pack Config.project
-
-module Command =
-    let restore () = Task.restore ()
-
-    let subbuild () = Task.build Template.DotNet.Config.Debug
-
-    let build () =
-        job {
-            restore ()
-            subbuild ()
-        }
-
-    let subwatch () = Task.watch ()
-
-    let watch () =
-        job {
-            restore ()
-            subwatch ()
-        }
-
-    let pack version =
-        job {
-            restore ()
-            Task.build Template.DotNet.Config.Release
-            Task.pack version
-        }
+    let pack = Paket.pack Config.project
 
 [<EntryPoint>]
 let main args =
     args
     |> List.ofArray
     |> function
-        | [ "restore" ] -> Command.restore ()
-        | [ "subbuild" ] -> Command.subbuild ()
+        | [ "restore" ] -> Task.restore ()
+        | [ "subbuild" ] -> Task.build DotNetConfig.Debug
         | []
-        | [ "build" ] -> Command.build ()
-        | [ "subwatch" ] -> Command.subwatch ()
-        | [ "watch" ] -> Command.watch ()
-        | [ "pack"; version ] -> Command.pack version
+        | [ "build" ] ->
+            job {
+                Task.restore ()
+                Task.build DotNetConfig.Debug
+            }
+        | [ "subwatch" ] -> Task.watch ()
+        | [ "watch" ] ->
+            job {
+                Task.restore ()
+                Task.watch ()
+            }
+        | [ "pack"; version ] ->
+            job {
+                Task.restore ()
+                Task.build DotNetConfig.Release
+                Task.pack version
+            }
         // Missing args cases
         | [ "pack" ] ->
             let msg = [ "Usage: dotnet run pack <version>" ]
@@ -76,8 +58,10 @@ let main args =
         // Default error case
         | _ ->
             let msg =
-                [ "Usage: dotnet run [<command>]"
-                  "Look up available commands in run.fs" ]
+                [
+                    "Usage: dotnet run [<command>]"
+                    "Look up available commands in run.fs"
+                ]
 
             Error(1, msg)
     |> ProcessResult.wrapUp

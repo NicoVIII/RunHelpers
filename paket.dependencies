@@ -1,6 +1,7 @@
 source https://www.nuget.org/api/v2
 
 storage: none
+framework: auto-detect
 
-nuget FSharp.Core >= 5.0
+nuget FSharp.Core >= 5.0 lowest_matching: true, redirects: force
 nuget Fake.Core.Process ~> 5.0

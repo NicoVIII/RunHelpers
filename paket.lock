@@ -1,38 +1,30 @@
 STORAGE: NONE
+RESTRICTION: == net5.0
 NUGET
   remote: https://www.nuget.org/api/v2
-    Fake.Core.Context (5.20.4) - restriction: >= netstandard2.0
-      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
-    Fake.Core.Environment (5.20.4) - restriction: >= netstandard2.0
-      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
-    Fake.Core.FakeVar (5.20.4) - restriction: >= netstandard2.0
-      Fake.Core.Context (>= 5.20.4) - restriction: >= netstandard2.0
-      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
+    Fake.Core.Context (5.20.4)
+      FSharp.Core (>= 4.7.2)
+    Fake.Core.Environment (5.20.4)
+      FSharp.Core (>= 4.7.2)
+    Fake.Core.FakeVar (5.20.4)
+      Fake.Core.Context (>= 5.20.4)
+      FSharp.Core (>= 4.7.2)
     Fake.Core.Process (5.20.4)
-      Fake.Core.Environment (>= 5.20.4) - restriction: >= netstandard2.0
-      Fake.Core.FakeVar (>= 5.20.4) - restriction: >= netstandard2.0
-      Fake.Core.String (>= 5.20.4) - restriction: >= netstandard2.0
-      Fake.Core.Trace (>= 5.20.4) - restriction: >= netstandard2.0
-      Fake.IO.FileSystem (>= 5.20.4) - restriction: >= netstandard2.0
-      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
-      System.Collections.Immutable (>= 1.7.1) - restriction: >= netstandard2.0
-    Fake.Core.String (5.20.4) - restriction: >= netstandard2.0
-      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
-    Fake.Core.Trace (5.20.4) - restriction: >= netstandard2.0
-      Fake.Core.Environment (>= 5.20.4) - restriction: >= netstandard2.0
-      Fake.Core.FakeVar (>= 5.20.4) - restriction: >= netstandard2.0
-      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
-    Fake.IO.FileSystem (5.20.4) - restriction: >= netstandard2.0
-      Fake.Core.String (>= 5.20.4) - restriction: >= netstandard2.0
-      FSharp.Core (>= 4.7.2) - restriction: >= netstandard2.0
-    FSharp.Core (5.0.2)
-    System.Buffers (4.5.1) - restriction: || (&& (>= monoandroid) (< netstandard1.1) (>= netstandard2.0)) (&& (< monoandroid) (< netstandard1.1) (>= netstandard2.0) (< win8)) (&& (>= monotouch) (>= netstandard2.0)) (&& (< net45) (< netcoreapp2.0) (>= netstandard2.0) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)) (&& (>= net461) (>= netstandard2.0)) (&& (>= net461) (>= xamarinios)) (&& (>= net461) (>= xamarinmac)) (&& (< netstandard1.1) (>= netstandard2.0) (>= win8)) (&& (>= netstandard2.0) (>= uap10.1)) (&& (>= uap10.1) (>= xamarinios)) (&& (>= uap10.1) (>= xamarinmac))
-    System.Collections.Immutable (5.0) - restriction: >= netstandard2.0
-      System.Memory (>= 4.5.4) - restriction: || (&& (< monoandroid) (< monotouch) (< net45) (>= netstandard1.3) (< netstandard2.0) (< win8) (< wpa81) (< xamarintvos) (< xamarinwatchos)) (&& (< net45) (< netcoreapp2.1) (>= netstandard2.0) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)) (&& (>= net46) (< netstandard2.0)) (>= net461) (>= uap10.1)
-    System.Memory (4.5.4) - restriction: || (&& (< net45) (< netcoreapp2.1) (>= netstandard2.0) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)) (&& (>= net461) (>= netstandard2.0)) (&& (>= netstandard2.0) (>= uap10.1))
-      System.Buffers (>= 4.5.1) - restriction: || (&& (>= monoandroid) (< netstandard1.1)) (&& (< monoandroid) (< net45) (>= netstandard1.1) (< netstandard2.0) (< win8) (< wpa81)) (&& (< monoandroid) (< netstandard1.1) (>= portable-net45+win8+wpa81) (< win8)) (>= monotouch) (&& (>= net45) (< netstandard2.0)) (&& (< net45) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (&& (< netstandard1.1) (>= win8)) (&& (< netstandard2.0) (< uap10.1) (>= wpa81)) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
-      System.Numerics.Vectors (>= 4.4) - restriction: && (< net45) (< netcoreapp2.0) (>= netstandard2.0) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)
-      System.Numerics.Vectors (>= 4.5) - restriction: >= net461
-      System.Runtime.CompilerServices.Unsafe (>= 4.5.3) - restriction: || (&& (>= monoandroid) (< netstandard1.1)) (&& (< monoandroid) (< net45) (>= netstandard1.1) (< netstandard2.0) (< win8) (< wpa81)) (&& (< monoandroid) (>= netcoreapp2.0) (< netcoreapp2.1)) (&& (< monoandroid) (< netstandard1.1) (>= portable-net45+win8+wpa81) (< win8)) (>= monotouch) (&& (>= net45) (< netstandard2.0)) (&& (< net45) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (&& (< netstandard1.1) (>= win8)) (&& (< netstandard2.0) (>= wpa81)) (>= uap10.1) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
-    System.Numerics.Vectors (4.5) - restriction: || (&& (< net45) (< netcoreapp2.0) (>= netstandard2.0) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)) (&& (>= net461) (>= netstandard2.0)) (&& (>= netstandard2.0) (>= uap10.1))
-    System.Runtime.CompilerServices.Unsafe (5.0) - restriction: || (&& (>= monoandroid) (< netstandard1.1) (>= netstandard2.0)) (&& (< monoandroid) (>= netcoreapp2.0) (< netcoreapp2.1) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)) (&& (< monoandroid) (< netstandard1.1) (>= netstandard2.0) (< win8)) (&& (>= monotouch) (>= netstandard2.0)) (&& (< net45) (< netcoreapp2.0) (>= netstandard2.0) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos)) (&& (>= net461) (>= netcoreapp2.0)) (&& (>= net461) (>= netstandard2.0)) (&& (>= net461) (>= xamarinios)) (&& (>= net461) (>= xamarinmac)) (&& (>= netcoreapp2.0) (>= uap10.1)) (&& (< netstandard1.1) (>= netstandard2.0) (>= win8)) (&& (>= netstandard2.0) (>= uap10.1)) (&& (>= uap10.1) (>= xamarinios)) (&& (>= uap10.1) (>= xamarinmac))
+      Fake.Core.Environment (>= 5.20.4)
+      Fake.Core.FakeVar (>= 5.20.4)
+      Fake.Core.String (>= 5.20.4)
+      Fake.Core.Trace (>= 5.20.4)
+      Fake.IO.FileSystem (>= 5.20.4)
+      FSharp.Core (>= 4.7.2)
+      System.Collections.Immutable (>= 1.7.1)
+    Fake.Core.String (5.20.4)
+      FSharp.Core (>= 4.7.2)
+    Fake.Core.Trace (5.20.4)
+      Fake.Core.Environment (>= 5.20.4)
+      Fake.Core.FakeVar (>= 5.20.4)
+      FSharp.Core (>= 4.7.2)
+    Fake.IO.FileSystem (5.20.4)
+      Fake.Core.String (>= 5.20.4)
+      FSharp.Core (>= 4.7.2)
+    FSharp.Core (5.0.2) - redirects: force
+    System.Collections.Immutable (5.0)
