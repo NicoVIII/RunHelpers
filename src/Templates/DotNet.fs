@@ -14,6 +14,18 @@ module DotNetConfig =
         | Debug -> "Debug"
         | Release -> "Release"
 
+type DotNetOS =
+    | WindowsX64
+    | LinuxX64
+// macOS single file publishing is weird, that's why it's missing atm
+
+[<RequireQualifiedAccess>]
+module DotNetOS =
+    let toString =
+        function
+        | WindowsX64 -> "win-x64"
+        | LinuxX64 -> "linux-x64"
+
 [<RequireQualifiedAccess>]
 module DotNet =
     let toolRestore () = dotnet [ "tool"; "restore" ]
@@ -34,3 +46,30 @@ module DotNet =
                  "--no-restore" ]
 
     let run project = dotnet [ "run"; "--project"; project ]
+
+    let pack outDir project version =
+        dotnet [ "pack"
+                 "-c"
+                 DotNetConfig.toString Release
+                 "-o"
+                 outDir
+                 $"/p:Version=%s{version}"
+                 project ]
+
+    let publishSelfContained outDir project os =
+        dotnet [ "publish"
+                 "-r"
+                 DotNetOS.toString os
+                 "-v"
+                 "minimal"
+                 "-c"
+                 "Release"
+                 "-o"
+                 outDir
+                 "--self-contained"
+                 "/p:PublishSingleFile=true"
+                 "/p:PublishTrimmed=true"
+                 "/p:EnableCompressionInSingleFile=true"
+                 "/p:IncludeNativeLibrariesForSelfExtract=true"
+                 "/p:DebugType=None"
+                 project ]

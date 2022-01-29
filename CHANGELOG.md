@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Template for toolRestore and restore in one step named restoreWithTools
+- DotNet template for toolRestore and restore in one step named restoreWithTools
+- DotNet template for basic packing
+- DotNet template for self contained publishing
 
 ### Changed
 - Replaced `Template` module with RequiredQualifiedAccess by `Templates` namespace
