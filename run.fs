@@ -18,7 +18,7 @@ module Task =
             |> WatcherOptions.excludeFolders [ "bin"
                                                "obj" ]
 
-        use watcher = setupWatcher options [ "src" ] (fun () -> build DotNetConfig.Debug)
+        use _ = setupWatcher options [ "src" ] (fun () -> build DotNetConfig.Debug)
 
         printfn "Waiting for changes... (enter for exit)"
         Console.ReadLine() |> ignore
@@ -32,12 +32,12 @@ let main args =
     |> List.ofArray
     |> function
         | [ "restore" ] -> Task.restore ()
-        | [ "subbuild" ] -> Task.build DotNetConfig.Debug
+        | [ "subbuild" ] -> Task.build Debug
         | []
         | [ "build" ] ->
             job {
                 Task.restore ()
-                Task.build DotNetConfig.Debug
+                Task.build Debug
             }
         | [ "subwatch" ] -> Task.watch ()
         | [ "watch" ] ->
@@ -48,7 +48,7 @@ let main args =
         | [ "pack"; version ] ->
             job {
                 Task.restore ()
-                Task.build DotNetConfig.Release
+                Task.build Release
                 Task.pack version
             }
         // Missing args cases
