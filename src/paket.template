@@ -1,6 +1,0 @@
-type project
-id NicoVIII.RunHelpers
-licenseUrl https://licenses.nuget.org/MIT
-licenseExpression MIT
-repositoryType git
-repositoryUrl https://github.com/NicoVIII/RunHelpers

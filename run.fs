@@ -7,6 +7,7 @@ open RunHelpers.Watch
 [<RequireQualifiedAccess>]
 module Config =
     let project = "./src/RunHelpers.fsproj"
+    let packDir = "./pack"
 
 module Task =
     let restore () = DotNet.restoreWithTools Config.project
@@ -18,13 +19,14 @@ module Task =
             |> WatcherOptions.excludeFolders [ "bin"
                                                "obj" ]
 
-        use _ = setupWatcher options [ "src" ] (fun () -> build DotNetConfig.Debug)
+        use _ = setupWatcher options [ "src" ] (fun () -> build Debug)
 
         printfn "Waiting for changes... (enter for exit)"
         Console.ReadLine() |> ignore
         Ok
 
-    let pack = Paket.pack Config.project
+    let pack version =
+        DotNet.pack Config.packDir Config.project version
 
 [<EntryPoint>]
 let main args =

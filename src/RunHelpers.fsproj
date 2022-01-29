@@ -5,8 +5,14 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
+    <Product>NicoVIII.RunHelpers</Product>
     <PackageId>NicoVIII.RunHelpers</PackageId>
+    <Title>RunHelpers</Title>
     <Authors>NicoVIII</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/NicoVIII/RunHelpers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NicoVIII/RunHelpers</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constant.fs" />
