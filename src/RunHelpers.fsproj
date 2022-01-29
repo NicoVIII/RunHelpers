@@ -13,6 +13,7 @@
     <PackageProjectUrl>https://github.com/NicoVIII/RunHelpers</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NicoVIII/RunHelpers</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Constant.fs" />
@@ -25,6 +26,9 @@
     <Compile Include="Templates/Paket.fs" />
     <Compile Include="Templates/Pnpm.fs" />
     <Compile Include="Watch.fs" />
+  </ItemGroup>
+  <ItemGroup>
+      <None Include="..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

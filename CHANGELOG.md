@@ -5,12 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
-## [0.5.0-alpha.2] - 2022-01-29
 ### Added
 - DotNet template for toolRestore and restore in one step named restoreWithTools
 - DotNet template for basic packing
 - DotNet template for self contained publishing
+- README to nuget package
 
 ### Changed
 - Replaced `Template` module with RequiredQualifiedAccess by `Templates` namespace
