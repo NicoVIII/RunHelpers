@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Template for toolRestore and restore in one step named restoreWithTools
+
+### Changed
+- Replaced `Template` module with RequiredQualifiedAccess by `Templates` namespace
+
 ## [0.4.1] - 2021-11-16
 ### Fixed
 - Loosen FSharp.Core version constraints (from ~> 5.0 to >= 5.0 which allows e.g. 6.0)

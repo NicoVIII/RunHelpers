@@ -14,7 +14,10 @@
     <Compile Include="FakeHelpers.fs" />
     <Compile Include="Builder.fs" />
     <Compile Include="Shortcut.fs" />
-    <Compile Include="Template.fs" />
+    <Compile Include="Templates/DotNet.fs" />
+    <Compile Include="Templates/Npm.fs" />
+    <Compile Include="Templates/Paket.fs" />
+    <Compile Include="Templates/Pnpm.fs" />
     <Compile Include="Watch.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
