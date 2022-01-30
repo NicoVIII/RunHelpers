@@ -26,5 +26,9 @@ NUGET
     Fake.IO.FileSystem (5.20.4)
       Fake.Core.String (>= 5.20.4)
       FSharp.Core (>= 4.7.2)
-    FSharp.Core (5.0.2) - redirects: force
-    System.Collections.Immutable (5.0)
+    FSharp.Core (5.0) - redirects: force
+    System.Collections.Immutable (6.0)
+      System.Memory (>= 4.5.4)
+      System.Runtime.CompilerServices.Unsafe (>= 6.0)
+    System.Memory (4.5.4)
+    System.Runtime.CompilerServices.Unsafe (6.0)
