@@ -19,32 +19,6 @@ module Task =
     let restore () = DotNet.restoreWithTools Config.project
     let build config = DotNet.build Config.project config
 
-    let testTemplates () =
-        Shell.mkdir Config.templateTest
-        Shell.cleanDir Config.templateTest
-
-        job {
-            for template in Directory.EnumerateDirectories Config.templates do
-                // Build
-                DotNet.build template Debug
-
-                // Install
-                dotnet [ "new"
-                         "--uninstall"
-                         template ]
-                |> ignore
-
-                dotnet [ "new"; "--install"; template ]
-
-                // Use
-                let templateName = Path.GetFileName template
-
-                dotnet [ "new"
-                         templateName
-                         "-o"
-                         $"{Config.templateTest}/{templateName}" ]
-        }
-
     let watch () =
         let options =
             WatcherOptions.create ()
@@ -60,6 +34,45 @@ module Task =
     let pack version =
         DotNet.pack Config.packDir Config.project version
 
+    [<RequireQualifiedAccess>]
+    module Template =
+        let test () =
+            Shell.mkdir Config.templateTest
+            Shell.cleanDir Config.templateTest
+
+            job {
+                for template in Directory.EnumerateDirectories(Config.templates) do
+                    match Path.GetFileName template with
+                    | "bin"
+                    | "obj" -> ()
+                    | _ ->
+                        // Build
+                        DotNet.restore template
+                        DotNet.build template Debug
+
+                        // Install
+                        dotnet [ "new"
+                                 "--uninstall"
+                                 template ]
+                        |> ignore
+
+                        dotnet [ "new"; "--install"; template ]
+
+                        // Use
+                        let templateName = Path.GetFileName template
+
+                        dotnet [ "new"
+                                 templateName
+                                 "-o"
+                                 $"{Config.templateTest}/{templateName}" ]
+
+                DotNet.restore Config.templates
+                DotNet.build Config.templates Debug
+            }
+
+        let pack version =
+            DotNet.pack Config.packDir Config.templates version
+
 [<EntryPoint>]
 let main args =
     args
@@ -72,11 +85,7 @@ let main args =
                 Task.restore ()
                 Task.build Debug
             }
-        | [ "test-templates" ] ->
-            job {
-                Task.restore ()
-                Task.testTemplates ()
-            }
+        | [ "test-templates" ] -> Task.Template.test ()
         | [ "subwatch" ] -> Task.watch ()
         | [ "watch" ] ->
             job {
@@ -89,9 +98,17 @@ let main args =
                 Task.build Release
                 Task.pack version
             }
+        | [ "pack-templates"; version ] -> Task.Template.pack version
         // Missing args cases
         | [ "pack" ] ->
             let msg = [ "Usage: dotnet run pack <version>" ]
+            Error(1, msg)
+        | [ "pack-templates" ] ->
+            let msg =
+                [
+                    "Usage: dotnet run pack-templates <version>"
+                ]
+
             Error(1, msg)
         // Default error case
         | _ ->
