@@ -63,7 +63,7 @@ module DotNet =
                  "-v"
                  "minimal"
                  "-c"
-                 "Release"
+                 DotNetConfig.toString Release
                  "-o"
                  outDir
                  "--self-contained"
