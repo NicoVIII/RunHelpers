@@ -8,13 +8,9 @@
     <Product>NicoVIII.RunHelpers</Product>
     <PackageId>NicoVIII.RunHelpers</PackageId>
     <Title>RunHelpers</Title>
-    <Authors>NicoVIII</Authors>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/NicoVIII/RunHelpers</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/NicoVIII/RunHelpers</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+  <Import Project="../Metadata.targets" />
   <ItemGroup>
     <Compile Include="Constant.fs" />
     <Compile Include="Types.fs" />
