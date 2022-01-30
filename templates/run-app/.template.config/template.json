@@ -1,0 +1,10 @@
+{
+    "author": "NicoVIII",
+    "classifications": [],
+    "name": "RunHelper template for apps",
+    "identity": "NicoVIII.RunHelper-App",
+    "shortName": "run-app",
+    "tags": {
+        "language": "F#"
+    }
+}

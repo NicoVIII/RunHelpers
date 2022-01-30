@@ -1,6 +1,10 @@
 open System
+open System.IO
+
+open Fake.IO
 
 open RunHelpers
+open RunHelpers.BasicShortcuts
 open RunHelpers.Templates
 open RunHelpers.Watch
 
@@ -8,10 +12,38 @@ open RunHelpers.Watch
 module Config =
     let project = "./src/RunHelpers.fsproj"
     let packDir = "./pack"
+    let templates = "./templates"
+    let templateTest = "./test-templates"
 
 module Task =
     let restore () = DotNet.restoreWithTools Config.project
-    let build = DotNet.build Config.project
+    let build config = DotNet.build Config.project config
+
+    let testTemplates () =
+        Shell.mkdir Config.templateTest
+        Shell.cleanDir Config.templateTest
+
+        job {
+            for template in Directory.EnumerateDirectories Config.templates do
+                // Build
+                DotNet.build template Debug
+
+                // Install
+                dotnet [ "new"
+                         "--uninstall"
+                         template ]
+                |> ignore
+
+                dotnet [ "new"; "--install"; template ]
+
+                // Use
+                let templateName = Path.GetFileName template
+
+                dotnet [ "new"
+                         templateName
+                         "-o"
+                         $"{Config.templateTest}/{templateName}" ]
+        }
 
     let watch () =
         let options =
@@ -34,12 +66,16 @@ let main args =
     |> List.ofArray
     |> function
         | [ "restore" ] -> Task.restore ()
-        | [ "subbuild" ] -> Task.build Debug
         | []
         | [ "build" ] ->
             job {
                 Task.restore ()
                 Task.build Debug
+            }
+        | [ "test-templates" ] ->
+            job {
+                Task.restore ()
+                Task.testTemplates ()
             }
         | [ "subwatch" ] -> Task.watch ()
         | [ "watch" ] ->

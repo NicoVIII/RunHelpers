@@ -7,6 +7,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "run", "run.fsproj", "{58861
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RunHelpers", "src\RunHelpers.fsproj", "{D7C982E6-9E75-46EA-B86C-4F878793485C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templates", "templates", "{E2D243D1-2DB7-4008-AF8B-70A7BDC37889}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "run", "templates\run-app\run.fsproj", "{CDD0080E-AD00-440A-9522-5341BBBFEEC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +48,20 @@ Global
 		{D7C982E6-9E75-46EA-B86C-4F878793485C}.Release|x64.Build.0 = Release|Any CPU
 		{D7C982E6-9E75-46EA-B86C-4F878793485C}.Release|x86.ActiveCfg = Release|Any CPU
 		{D7C982E6-9E75-46EA-B86C-4F878793485C}.Release|x86.Build.0 = Release|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Debug|x64.Build.0 = Debug|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Debug|x86.Build.0 = Debug|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Release|x64.ActiveCfg = Release|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Release|x64.Build.0 = Release|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Release|x86.ActiveCfg = Release|Any CPU
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDD0080E-AD00-440A-9522-5341BBBFEEC2} = {E2D243D1-2DB7-4008-AF8B-70A7BDC37889}
 	EndGlobalSection
 EndGlobal

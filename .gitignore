@@ -8,3 +8,6 @@ obj/
 
 # Packed library
 *.nupkg
+
+# Testdir for applying templates
+test-templates/
