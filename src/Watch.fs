@@ -7,7 +7,9 @@ open System.IO
 module Watch =
     /// Helpertype for multiple FileSystemWatchers
     type FileSystemWatcherList =
-        { watchers: FileSystemWatcher list }
+        {
+            watchers: FileSystemWatcher list
+        }
         interface IDisposable with
             member this.Dispose() =
                 this.watchers
@@ -22,24 +24,31 @@ module Watch =
             |> create
 
     type WatcherOptions =
-        { includeSubdirectories: bool
-          excludeFolders: string list }
+        {
+            includeSubdirectories: bool
+            excludeFolders: string list
+        }
 
     module WatcherOptions =
         let create () =
-            { includeSubdirectories = true
-              excludeFolders = [ "bin"; "obj" ] }
+            {
+                includeSubdirectories = true
+                excludeFolders = [ "bin"; "obj" ]
+            }
 
         let excludeFolders folders options =
             { options with
                 excludeFolders =
                     List.append options.excludeFolders folders
-                    |> List.distinct }
+                    |> List.distinct
+            }
 
         let excludeFolder folder = excludeFolders [ folder ]
 
         let withoutSubdirectories options =
-            { options with includeSubdirectories = false }
+            { options with
+                includeSubdirectories = false
+            }
 
     let setupWatcher options folders onChange =
         let mutable working = false

@@ -9,18 +9,20 @@ module Config =
 
     let mainProject = $"REPLACE.fsproj"
 
-    let testProject =
-        $"REPLACE.fsproj"
+    let testProject = $"REPLACE.fsproj"
 
     let artifactName = "REPLACE"
 
     let publishPath = "./publish"
 
 module Task =
-    let restore () = DotNet.restoreWithTools Config.mainProject
+    let restore () =
+        DotNet.restoreWithTools Config.mainProject
+
     let build () = DotNet.build Config.mainProject Debug
     let run () = DotNet.run Config.mainProject
     let runTest () = DotNet.run Config.testProject
+
     let publish () =
         let publish = DotNet.publishSelfContained Config.publishPath Config.mainProject
 
