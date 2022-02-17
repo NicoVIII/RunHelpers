@@ -72,10 +72,8 @@ let main args =
             }
         | _ ->
             let msg =
-                [
-                    "Usage: dotnet run [<command>]"
-                    "Look up available commands in run.fs"
-                ]
+                [ "Usage: dotnet run [<command>]"
+                  "Look up available commands in run.fs" ]
 
             Error(1, msg)
     |> ProcessResult.wrapUp
