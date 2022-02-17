@@ -10,7 +10,6 @@
     <Title>RunHelpers</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
-  <Import Project="../Metadata.targets" />
   <ItemGroup>
     <Compile Include="Constant.fs" />
     <Compile Include="Types.fs" />

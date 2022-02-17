@@ -15,8 +15,6 @@
     <PackageTags>dotnet-new;templates</PackageTags>
   </PropertyGroup>
 
-  <Import Project="../Metadata.targets" />
-
   <ItemGroup>
     <Content Include="**\*" Exclude="**\bin\**;**\obj\**" />
     <Compile Remove="**\*" />

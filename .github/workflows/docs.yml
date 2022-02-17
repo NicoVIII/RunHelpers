@@ -1,0 +1,30 @@
+name: Docs
+
+on:
+  push:
+    #tags:
+    #  - "v*.*.*"
+    #  - "!v*.*.*-*"
+
+jobs:
+  docs:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        dotnet: [6.0.100]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Restore tools
+        run: dotnet tool restore
+      - name: Build docs
+        run: dotnet run build-docs
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./output
+          publish_branch: gh-pages
+          force_orphan: true

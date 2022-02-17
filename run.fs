@@ -35,6 +35,20 @@ module Task =
         DotNet.pack Config.packDir Config.project version
 
     [<RequireQualifiedAccess>]
+    module Docs =
+        let build () =
+            Shell.cp "./README.md" "docs/index.md"
+
+            dotnet [ "fsdocs"; "build"; "--clean" ]
+
+        let watch () =
+            Shell.deleteDir "./tmp"
+
+            Shell.cp "./README.md" "docs/index.md"
+
+            dotnet [ "fsdocs"; "watch" ]
+
+    [<RequireQualifiedAccess>]
     module Template =
         let test () =
             Shell.mkdir Config.templateTest
@@ -99,6 +113,18 @@ let main args =
                 Task.pack version
             }
         | [ "pack-templates"; version ] -> Task.Template.pack version
+        | [ "build-docs" ] ->
+            job {
+                Task.restore ()
+                Task.build Debug
+                Task.Docs.build ()
+            }
+        | [ "docs" ] ->
+            job {
+                Task.restore ()
+                Task.build Debug
+                Task.Docs.watch ()
+            }
         // Missing args cases
         | [ "pack" ] ->
             let msg = [ "Usage: dotnet run pack <version>" ]

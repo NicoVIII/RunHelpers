@@ -11,3 +11,8 @@ obj/
 
 # Testdir for applying templates
 test-templates/
+
+# fsdocs output
+.fsdocs/
+output/
+tmp/
