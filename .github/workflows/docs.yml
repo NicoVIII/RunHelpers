@@ -2,9 +2,9 @@ name: Docs
 
 on:
   push:
-    #tags:
-    #  - "v*.*.*"
-    #  - "!v*.*.*-*"
+    tags:
+      - "v*.*.*"
+      - "!v*.*.*-*"
 
 jobs:
   docs:
