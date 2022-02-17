@@ -63,4 +63,4 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref }}
-          file: LICENSE.md
+          file: LICENSE.txt
