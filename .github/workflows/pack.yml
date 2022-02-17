@@ -49,8 +49,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
           body: ${{ steps.changelog_reader.outputs.changes }}
-          prerelease: ${{ steps.changelog_reader.outputs.status == 'prereleased' }}
-          draft: ${{ steps.changelog_reader.outputs.status == 'unreleased' }}
+          prerelease: ${{ steps.changelog_reader.outputs.status == 'unreleased' }}
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
