@@ -71,9 +71,8 @@ let main args =
                 Task.publish ()
             }
         | _ ->
-            let msg =
+            Job.error
+                1
                 [ "Usage: dotnet run [<command>]"
                   "Look up available commands in run.fs" ]
-
-            Error(1, msg)
-    |> ProcessResult.wrapUp
+    |> Job.execute
