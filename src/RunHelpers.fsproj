@@ -13,7 +13,6 @@
   <ItemGroup>
     <Compile Include="Constant.fs" />
     <Compile Include="Types.fs" />
-    <Compile Include="FakeHelpers.fs" />
     <Compile Include="Builder.fs" />
     <Compile Include="Shortcut.fs" />
     <Compile Include="Templates/DotNet.fs" />

@@ -10,9 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - DotNet template for basic packing
 - DotNet template for self contained publishing
 - README to nuget package
+- Add "parallel" operation to allow parallel execution of stuff
 
 ### Changed
 - Replaced `Template` module with RequiredQualifiedAccess by `Templates` namespace
+- Restructure structure to enable parallelization feature
 
 ## [0.4.1] - 2021-11-16
 ### Fixed

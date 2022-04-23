@@ -3,11 +3,10 @@ namespace RunHelpers
 module BasicShortcuts =
     module Internal =
         open Fake.Core
-        open FakeHelpers
 
         let inline basicCommand cmd =
             CreateProcess.fromRawCommand cmd
-            >> Proc.runAsJob Constant.errorExitCode
+            >> Job.fromCreateProcess Constant.errorExitCode
 
     let dotnet args = Internal.basicCommand "dotnet" args
 

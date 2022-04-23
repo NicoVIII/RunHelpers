@@ -2,20 +2,19 @@ namespace RunHelpers
 
 [<AutoOpen>]
 module Builder =
-    open FakeHelpers
+    type JobBuilder(combine) =
+        member __.Combine(process1, process2) = combine process1 process2
 
-    type JobBuilder() =
-        member __.Combine(res1, f2) = Proc.combine res1 f2
-
-        member __.Delay f = f
+        member __.Delay f = f ()
 
         member __.For(lst, f) =
             lst
-            |> Seq.fold (fun res1 el -> Proc.combine res1 (fun () -> f el)) Ok
+            |> Seq.fold (fun f1 el -> combine f1 (f el)) Job.ok
 
-        member __.Run f = f ()
+        member __.Run f = f
 
-        member __.Yield x = x
-        member __.Zero() = Ok
+        member __.Yield x : Job = x
+        member __.Zero() : Job = Job.ok
 
-    let job = JobBuilder()
+    let job = JobBuilder(Job.combineSequential)
+    let parallelJob = JobBuilder(Job.combineParallel Constant.errorExitCode)

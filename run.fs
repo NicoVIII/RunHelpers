@@ -17,6 +17,7 @@ module Config =
 
 module Task =
     let restore () = DotNet.restoreWithTools Config.project
+
     let build config = DotNet.build Config.project config
 
     let watch () =
@@ -29,7 +30,7 @@ module Task =
 
         printfn "Waiting for changes... (enter for exit)"
         Console.ReadLine() |> ignore
-        Ok
+        Job.ok
 
     let pack version =
         DotNet.pack Config.packDir Config.project version
@@ -55,30 +56,34 @@ module Task =
             Shell.cleanDir Config.templateTest
 
             job {
-                for template in Directory.EnumerateDirectories(Config.templates) do
-                    match Path.GetFileName template with
-                    | "bin"
-                    | "obj" -> ()
-                    | _ ->
-                        // Build
-                        DotNet.restore template
-                        DotNet.build template Debug
+                parallelJob {
+                    for template in Directory.EnumerateDirectories(Config.templates) do
+                        match Path.GetFileName template with
+                        | "bin"
+                        | "obj" -> ()
+                        | _ ->
+                            job {
+                                // Build
+                                DotNet.restore template
+                                DotNet.build template Debug
 
-                        // Install
-                        dotnet [ "new"
-                                 "--uninstall"
-                                 template ]
-                        |> ignore
+                                // Install
+                                dotnet [ "new"
+                                         "--uninstall"
+                                         template ]
+                                |> Job.allowFailure
 
-                        dotnet [ "new"; "--install"; template ]
+                                dotnet [ "new"; "--install"; template ]
 
-                        // Use
-                        let templateName = Path.GetFileName template
+                                // Use
+                                let templateName = Path.GetFileName template
 
-                        dotnet [ "new"
-                                 templateName
-                                 "-o"
-                                 $"{Config.templateTest}/{templateName}" ]
+                                dotnet [ "new"
+                                         templateName
+                                         "-o"
+                                         $"{Config.templateTest}/{templateName}" ]
+                            }
+                }
 
                 DotNet.restore Config.templates
                 DotNet.build Config.templates Debug
@@ -128,14 +133,14 @@ let main args =
         // Missing args cases
         | [ "pack" ] ->
             let msg = [ "Usage: dotnet run pack <version>" ]
-            Error(1, msg)
+            Job.error 1 msg
         | [ "pack-templates" ] ->
             let msg =
                 [
                     "Usage: dotnet run pack-templates <version>"
                 ]
 
-            Error(1, msg)
+            Job.error 1 msg
         // Default error case
         | _ ->
             let msg =
@@ -144,5 +149,5 @@ let main args =
                     "Look up available commands in run.fs"
                 ]
 
-            Error(1, msg)
-    |> ProcessResult.wrapUp
+            Job.error 1 msg
+    |> Job.execute
