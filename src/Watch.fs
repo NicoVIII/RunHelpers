@@ -64,7 +64,7 @@ module Watch =
                 watcher.IncludeSubdirectories <- options.includeSubdirectories
                 watcher)
 
-        /// Does the work necessary after a change
+        // Does the work necessary after a change
         let rec work () =
             working <- true
             onChange () |> ignore
@@ -77,7 +77,7 @@ module Watch =
                 printfn "- Waiting for changes... (enter to exit)"
                 working <- false
 
-        /// Handles events, debounces them and filters them
+        // Handles events, debounces them and filters them
         let handler (args: FileSystemEventArgs) =
             let filtered =
                 options.excludeFolders

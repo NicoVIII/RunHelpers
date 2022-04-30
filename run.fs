@@ -16,9 +16,27 @@ module Config =
     let templateTest = "./test-templates"
 
 module Task =
-    let restore () = DotNet.restoreWithTools Config.project
+    let restore () =
+        job {
+            DotNet.restoreWithTools Config.project
 
-    let build config = DotNet.build Config.project config
+            // Restore templates
+            parallelJob {
+                for template in Directory.EnumerateFiles(Config.templates, "*.fsproj", SearchOption.AllDirectories) do
+                    DotNet.restore template
+            }
+        }
+
+    let build config =
+        job {
+            DotNet.build Config.project config
+
+            // Build templates
+            parallelJob {
+                for template in Directory.EnumerateFiles(Config.templates, "*.fsproj", SearchOption.AllDirectories) do
+                    DotNet.build template Debug
+            }
+        }
 
     let watch () =
         let options =
@@ -38,29 +56,35 @@ module Task =
     [<RequireQualifiedAccess>]
     module Docs =
         let build () =
-            Shell.cp "./README.md" "docs/index.md"
+            job {
+                Shell.cp "./README.md" "docs/index.md"
 
-            dotnet [ "fsdocs"; "build"; "--clean" ]
+                dotnet [ "fsdocs"; "build"; "--clean" ]
+
+                printfn "Finished building docs!"
+            }
 
         let watch () =
-            Shell.deleteDir "./tmp"
+            job {
+                Shell.deleteDir "./tmp"
 
-            Shell.cp "./README.md" "docs/index.md"
+                Shell.cp "./README.md" "docs/index.md"
 
-            dotnet [ "fsdocs"; "watch" ]
+                dotnet [ "fsdocs"; "watch" ]
+            }
 
     [<RequireQualifiedAccess>]
     module Template =
         let test () =
-            Shell.mkdir Config.templateTest
-            Shell.cleanDir Config.templateTest
-
             job {
+                Shell.mkdir Config.templateTest
+                Shell.cleanDir Config.templateTest
+
                 parallelJob {
                     for template in Directory.EnumerateDirectories(Config.templates) do
                         match Path.GetFileName template with
                         | "bin"
-                        | "obj" -> ()
+                        | "obj" -> Job.ok
                         | _ ->
                             job {
                                 // Build
@@ -90,7 +114,7 @@ module Task =
             }
 
         let pack version =
-            DotNet.pack Config.packDir Config.templates version
+            job { DotNet.pack Config.packDir Config.templates version }
 
 [<EntryPoint>]
 let main args =
@@ -131,23 +155,10 @@ let main args =
                 Task.Docs.watch ()
             }
         // Missing args cases
-        | [ "pack" ] ->
-            let msg = [ "Usage: dotnet run pack <version>" ]
-            Job.error 1 msg
-        | [ "pack-templates" ] ->
-            let msg =
-                [
-                    "Usage: dotnet run pack-templates <version>"
-                ]
-
-            Job.error 1 msg
+        | [ "pack" ] -> Job.error [ "Usage: dotnet run pack <version>" ]
+        | [ "pack-templates" ] -> Job.error [ "Usage: dotnet run pack-templates <version>" ]
         // Default error case
         | _ ->
-            let msg =
-                [
-                    "Usage: dotnet run [<command>]"
-                    "Look up available commands in run.fs"
-                ]
-
-            Job.error 1 msg
+            Job.error [ "Usage: dotnet run [<command>]"
+                        "Look up available commands in run.fs" ]
     |> Job.execute

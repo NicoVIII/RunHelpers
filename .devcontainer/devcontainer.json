@@ -8,7 +8,7 @@
     },
     // Set *default* container specific settings.json values on container create.
     "settings": {
-        "FSharp.dotnetRoot": "/bin",
+        "FSharp.dotnetRoot": "/usr/bin",
     },
     // Add the IDs of extensions you want installed when the container is created.
     "extensions": [

@@ -6,7 +6,7 @@ module BasicShortcuts =
 
         let inline basicCommand cmd =
             CreateProcess.fromRawCommand cmd
-            >> Job.fromCreateProcess Constant.errorExitCode
+            >> Job.fromCreateProcess
 
     let dotnet args = Internal.basicCommand "dotnet" args
 
