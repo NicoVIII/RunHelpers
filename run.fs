@@ -4,7 +4,7 @@ open System.IO
 open Fake.IO
 
 open RunHelpers
-open RunHelpers.BasicShortcuts
+open RunHelpers.Shortcuts
 open RunHelpers.Templates
 open RunHelpers.Watch
 

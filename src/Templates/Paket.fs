@@ -1,6 +1,6 @@
 namespace RunHelpers.Templates
 
-open RunHelpers.BasicShortcuts
+open RunHelpers.Shortcuts
 
 [<RequireQualifiedAccess>]
 module Paket =

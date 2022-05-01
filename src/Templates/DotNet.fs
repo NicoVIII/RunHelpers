@@ -1,7 +1,7 @@
 namespace RunHelpers.Templates
 
 open RunHelpers
-open RunHelpers.BasicShortcuts
+open RunHelpers.Shortcuts
 
 type DotNetConfig =
     | Debug

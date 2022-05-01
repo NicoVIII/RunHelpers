@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - DotNet template for self contained publishing
 - README to nuget package
 - Add "parallel" operation to allow parallel execution of stuff
+- Basic cmd shortcut to easily create own shortcuts
 
 ### Changed
 - Replaced `Template` module with RequiredQualifiedAccess by `Templates` namespace

@@ -1,18 +1,20 @@
 namespace RunHelpers
 
+[<AutoOpen>]
 module BasicShortcuts =
-    module Internal =
-        open Fake.Core
+    open Fake.Core
 
-        let inline basicCommand cmd =
-            CreateProcess.fromRawCommand cmd
-            >> Job.fromCreateProcess
+    let inline cmd rawCmd =
+        CreateProcess.fromRawCommand rawCmd
+        >> Job.fromCreateProcess
 
-    let dotnet args = Internal.basicCommand "dotnet" args
+module Shortcuts =
+    let inline dotnet args = cmd "dotnet" args
 
-    let paket args =
-        Internal.basicCommand "dotnet" [ "paket"; yield! args ]
+    // dotnet tooling
+    let inline fable args = dotnet [ "fable"; yield! args ]
+    let inline paket args = dotnet [ "paket"; yield! args ]
 
-    let npm args = Internal.basicCommand "npm" args
-
-    let pnpm args = Internal.basicCommand "pnpm" args
+    // Node package manager
+    let inline npm args = cmd "npm" args
+    let inline pnpm args = cmd "pnpm" args
