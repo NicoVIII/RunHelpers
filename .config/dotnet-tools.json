@@ -3,19 +3,19 @@
   "isRoot": true,
   "tools": {
     "paket": {
-      "version": "7.1.5",
+      "version": "7.2.0",
       "commands": [
         "paket"
       ]
     },
-    "fantomas-tool": {
-      "version": "4.7.7",
+    "fantomas": {
+      "version": "5.2.1",
       "commands": [
         "fantomas"
       ]
     },
     "fsdocs-tool": {
-      "version": "15.0.0",
+      "version": "16.1.1",
       "commands": [
         "fsdocs"
       ]
