@@ -58,6 +58,7 @@ module DotNet =
 
     let publishSelfContained outDir project os =
         dotnet [ "publish"
+                 project
                  "-r"
                  DotNetOS.toString os
                  "-v"
@@ -71,5 +72,4 @@ module DotNet =
                  "/p:PublishTrimmed=true"
                  "/p:EnableCompressionInSingleFile=true"
                  "/p:IncludeNativeLibrariesForSelfExtract=true"
-                 "/p:DebugType=None"
-                 project ]
+                 "/p:DebugType=None" ]
