@@ -39,37 +39,37 @@ module DotNet =
         }
 
     let build project config =
-        dotnet [ "build"
-                 project
-                 "-c"
-                 DotNetConfig.toString config
-                 "--no-restore" ]
+        dotnet [ "build"; project; "-c"; DotNetConfig.toString config; "--no-restore" ]
 
     let run project = dotnet [ "run"; "--project"; project ]
 
     let pack outDir project version =
-        dotnet [ "pack"
-                 "-c"
-                 DotNetConfig.toString Release
-                 "-o"
-                 outDir
-                 $"/p:Version=%s{version}"
-                 project ]
+        dotnet [
+            "pack"
+            "-c"
+            DotNetConfig.toString Release
+            "-o"
+            outDir
+            $"/p:Version=%s{version}"
+            project
+        ]
 
     let publishSelfContained outDir project os =
-        dotnet [ "publish"
-                 project
-                 "-r"
-                 DotNetOS.toString os
-                 "-v"
-                 "minimal"
-                 "-c"
-                 DotNetConfig.toString Release
-                 "-o"
-                 outDir
-                 "--self-contained"
-                 "/p:PublishSingleFile=true"
-                 "/p:PublishTrimmed=true"
-                 "/p:EnableCompressionInSingleFile=true"
-                 "/p:IncludeNativeLibrariesForSelfExtract=true"
-                 "/p:DebugType=None" ]
+        dotnet [
+            "publish"
+            project
+            "-r"
+            DotNetOS.toString os
+            "-v"
+            "minimal"
+            "-c"
+            DotNetConfig.toString Release
+            "-o"
+            outDir
+            "--self-contained"
+            "/p:PublishSingleFile=true"
+            "/p:PublishTrimmed=true"
+            "/p:EnableCompressionInSingleFile=true"
+            "/p:IncludeNativeLibrariesForSelfExtract=true"
+            "/p:DebugType=None"
+        ]

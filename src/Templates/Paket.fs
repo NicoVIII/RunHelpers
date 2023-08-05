@@ -11,9 +11,4 @@ module Paket =
             Path.GetDirectoryName project
             |> (fun folder -> Path.Combine(folder, "paket.template"))
 
-        paket [ "pack"
-                "."
-                "--template"
-                template
-                "--version"
-                version ]
+        paket [ "pack"; "."; "--template"; template; "--version"; version ]

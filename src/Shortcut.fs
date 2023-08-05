@@ -5,8 +5,7 @@ module BasicShortcuts =
     open Fake.Core
 
     let inline cmd rawCmd =
-        CreateProcess.fromRawCommand rawCmd
-        >> Job.fromCreateProcess
+        CreateProcess.fromRawCommand rawCmd >> Job.fromCreateProcess
 
 module Shortcuts =
     let inline dotnet args = cmd "dotnet" args

@@ -23,7 +23,9 @@ module Builder =
             let delayedEvaluate value = (fun () -> evaluation value)
 
             collection
-            |> Seq.fold (fun beforeResult value -> this.Combine(beforeResult, delayedEvaluate value)) Ok
+            |> Seq.fold
+                (fun beforeResult value -> this.Combine(beforeResult, delayedEvaluate value))
+                Ok
 
         member __.Run(f: DelayedResult) : Job = Job.create f
 
@@ -51,7 +53,8 @@ module Builder =
                             match combinedResult, result with
                             | Ok, result -> result
                             | combinedResult, Ok -> combinedResult
-                            | Error msgList1, Error msgList2 -> Error(List.append msgList1 msgList2))
+                            | Error msgList1, Error msgList2 ->
+                                Error(List.append msgList1 msgList2))
                         Ok
                         resultList
             }

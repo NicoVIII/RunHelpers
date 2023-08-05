@@ -70,9 +70,5 @@ let main args =
                 Task.restore ()
                 Task.publish ()
             }
-        | _ ->
-            Job.error
-                1
-                [ "Usage: dotnet run [<command>]"
-                  "Look up available commands in run.fs" ]
+        | _ -> Job.error [ "Usage: dotnet run [<command>]"; "Look up available commands in run.fs" ]
     |> Job.execute

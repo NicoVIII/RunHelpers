@@ -22,7 +22,12 @@ module Task =
 
             // Restore templates
             parallelJob {
-                for template in Directory.EnumerateFiles(Config.templates, "*.fsproj", SearchOption.AllDirectories) do
+                for template in
+                    Directory.EnumerateFiles(
+                        Config.templates,
+                        "*.fsproj",
+                        SearchOption.AllDirectories
+                    ) do
                     DotNet.restore template
             }
         }
@@ -33,16 +38,19 @@ module Task =
 
             // Build templates
             parallelJob {
-                for template in Directory.EnumerateFiles(Config.templates, "*.fsproj", SearchOption.AllDirectories) do
+                for template in
+                    Directory.EnumerateFiles(
+                        Config.templates,
+                        "*.fsproj",
+                        SearchOption.AllDirectories
+                    ) do
                     DotNet.build template Debug
             }
         }
 
     let watch () =
         let options =
-            WatcherOptions.create ()
-            |> WatcherOptions.excludeFolders [ "bin"
-                                               "obj" ]
+            WatcherOptions.create () |> WatcherOptions.excludeFolders [ "bin"; "obj" ]
 
         use _ = setupWatcher options [ "src" ] (fun () -> build Debug)
 
@@ -92,20 +100,19 @@ module Task =
                                 DotNet.build template Debug
 
                                 // Install
-                                dotnet [ "new"
-                                         "--uninstall"
-                                         template ]
-                                |> Job.allowFailure
+                                dotnet [ "new"; "--uninstall"; template ] |> Job.allowFailure
 
                                 dotnet [ "new"; "--install"; template ]
 
                                 // Use
                                 let templateName = Path.GetFileName template
 
-                                dotnet [ "new"
-                                         templateName
-                                         "-o"
-                                         $"{Config.templateTest}/{templateName}" ]
+                                dotnet [
+                                    "new"
+                                    templateName
+                                    "-o"
+                                    $"{Config.templateTest}/{templateName}"
+                                ]
                             }
                 }
 
@@ -158,7 +165,5 @@ let main args =
         | [ "pack" ] -> Job.error [ "Usage: dotnet run pack <version>" ]
         | [ "pack-templates" ] -> Job.error [ "Usage: dotnet run pack-templates <version>" ]
         // Default error case
-        | _ ->
-            Job.error [ "Usage: dotnet run [<command>]"
-                        "Look up available commands in run.fs" ]
+        | _ -> Job.error [ "Usage: dotnet run [<command>]"; "Look up available commands in run.fs" ]
     |> Job.execute

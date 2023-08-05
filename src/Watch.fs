@@ -6,49 +6,42 @@ open System.IO
 /// Contains helpers to setup watch commands
 module Watch =
     /// Helpertype for multiple FileSystemWatchers
-    type FileSystemWatcherList =
-        {
-            watchers: FileSystemWatcher list
-        }
+    type FileSystemWatcherList = {
+        watchers: FileSystemWatcher list
+    } with
+
         interface IDisposable with
             member this.Dispose() =
-                this.watchers
-                |> List.iter (fun watcher -> watcher.Dispose())
+                this.watchers |> List.iter (fun watcher -> watcher.Dispose())
 
     module FileSystemWatcherList =
         let create watchers = { watchers = watchers }
 
         let combine watcherLists =
-            watcherLists
-            |> List.collect (fun lst -> lst.watchers)
-            |> create
+            watcherLists |> List.collect (fun lst -> lst.watchers) |> create
 
-    type WatcherOptions =
-        {
-            includeSubdirectories: bool
-            excludeFolders: string list
-        }
+    type WatcherOptions = {
+        includeSubdirectories: bool
+        excludeFolders: string list
+    }
 
     module WatcherOptions =
-        let create () =
-            {
-                includeSubdirectories = true
-                excludeFolders = [ "bin"; "obj" ]
-            }
+        let create () = {
+            includeSubdirectories = true
+            excludeFolders = [ "bin"; "obj" ]
+        }
 
-        let excludeFolders folders options =
-            { options with
-                excludeFolders =
-                    List.append options.excludeFolders folders
-                    |> List.distinct
-            }
+        let excludeFolders folders options = {
+            options with
+                excludeFolders = List.append options.excludeFolders folders |> List.distinct
+        }
 
         let excludeFolder folder = excludeFolders [ folder ]
 
-        let withoutSubdirectories options =
-            { options with
+        let withoutSubdirectories options = {
+            options with
                 includeSubdirectories = false
-            }
+        }
 
     let setupWatcher options folders onChange =
         let mutable working = false
@@ -79,20 +72,12 @@ module Watch =
 
         // Handles events, debounces them and filters them
         let handler (args: FileSystemEventArgs) =
-            let filtered =
-                options.excludeFolders
-                |> List.exists (args.FullPath.Contains)
+            let filtered = options.excludeFolders |> List.exists (args.FullPath.Contains)
 
             if not filtered then
                 List.iter disable watchers
 
-                let working =
-                    async {
-                        if working then
-                            changedWhileWorking <- true
-                        else
-                            work ()
-                    }
+                let working = async { if working then changedWhileWorking <- true else work () }
 
                 let debouncer =
                     async {
