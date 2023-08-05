@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Move project in argument list to the front like in `dotnet publish --help` suggested
+- RunHelpers now targets .NET 6 instead of .NET 5
 
 ## [0.5.0] - 2022-05-28
 ### Added
