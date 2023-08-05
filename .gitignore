@@ -6,6 +6,10 @@ obj/
 .ionide/
 .fake/
 
+# Paket
+packages/
+paket-files/
+
 # Packed library
 *.nupkg
 
