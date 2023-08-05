@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        dotnet: [6.0.200]
+        dotnet: [6.0.412]
     runs-on: ${{ matrix.os }}
 
     steps:
