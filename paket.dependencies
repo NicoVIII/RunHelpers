@@ -3,4 +3,4 @@ source https://www.nuget.org/api/v2
 framework: auto-detect
 
 nuget FSharp.Core >= 6.0 lowest_matching: true, redirects: force
-nuget Fake.Core.Process ~> 5.0
+nuget Fake.Core.Process ~> 6.0
