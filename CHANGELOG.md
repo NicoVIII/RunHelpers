@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.6.0] - 2023-11-22
+
 ### Added
 - Add installation with npm and prefix
 
@@ -13,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move project in argument list to the front like in `dotnet publish --help` suggested
 - RunHelpers now targets .NET 6 instead of .NET 5
 - Update Fake.Core.Process to v6
+
 
 ## [0.5.0] - 2022-05-28
 
@@ -29,20 +33,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restructure structure to enable parallelization feature
 - Remove exitcode from error type
 
+
 ## [0.4.1] - 2021-11-16
 
 ### Fixed
 - Loosen FSharp.Core version constraints (from ~> 5.0 to >= 5.0 which allows e.g. 6.0)
+
 
 ## [0.4.0] - 2021-10-30
 
 ### Added
 - Helpers to build watch commands
 
+
 ## [0.3.0] - 2021-10-30
 
 ### Changed
 - Split template for tool restore and project restore
+
 
 ## [0.2.0] - 2021-10-30
 
@@ -50,11 +58,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rename FakeExtension stuff to avoid nameclashes with FAKE
 - Restructure stuff a bit
 
+
 ## [0.1.0] - 2021-10-27
 
 Initial release
 
-[Unreleased]: https://github.com/NicoVIII/RunHelpers/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/NicoVIII/RunHelpers/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/NicoVIII/RunHelpers/compare/v0.5.0..v0.6.0
 [0.5.0]: https://github.com/NicoVIII/RunHelpers/compare/v0.4.1..v0.5.0
 [0.4.1]: https://github.com/NicoVIII/RunHelpers/compare/v0.4.0..v0.4.1
 [0.4.0]: https://github.com/NicoVIII/RunHelpers/compare/v0.3.0..v0.4.0
