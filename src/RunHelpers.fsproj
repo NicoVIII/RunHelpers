@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
   <PropertyGroup>
     <Product>NicoVIII.RunHelpers</Product>
     <PackageId>NicoVIII.RunHelpers</PackageId>
     <Title>RunHelpers</Title>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="Types.fs" />
     <Compile Include="Builder.fs" />
@@ -20,8 +23,14 @@
     <Compile Include="Templates/Pnpm.fs" />
     <Compile Include="Watch.fs" />
   </ItemGroup>
+
   <ItemGroup>
       <None Include="..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="8.0.100" />
+    <PackageReference Include="Fake.Core.Process" Version="[6.0.0, 7)" />
+  </ItemGroup>
+
 </Project>

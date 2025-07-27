@@ -89,7 +89,7 @@ module Task =
                 Shell.cleanDir Config.templateTest
 
                 parallelJob {
-                    for template in Directory.EnumerateDirectories(Config.templates) do
+                    for template in Directory.EnumerateDirectories Config.templates do
                         match Path.GetFileName template with
                         | "bin"
                         | "obj" -> Job.ok
@@ -100,9 +100,9 @@ module Task =
                                 DotNet.build template Debug
 
                                 // Install
-                                dotnet [ "new"; "--uninstall"; template ] |> Job.allowFailure
+                                dotnet [ "new"; "uninstall"; template ] |> Job.allowFailure
 
-                                dotnet [ "new"; "--install"; template ]
+                                dotnet [ "new"; "install"; template ]
 
                                 // Use
                                 let templateName = Path.GetFileName template

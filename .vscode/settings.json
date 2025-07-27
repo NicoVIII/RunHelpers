@@ -1,5 +1,5 @@
 {
     "files.trimFinalNewlines": true,
     "editor.formatOnSave": true,
-    "FSharp.workspacePath": "SimpleOptics.sln",
+    "FSharp.workspacePath": "./RunHelpers.sln",
 }
