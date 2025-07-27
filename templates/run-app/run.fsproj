@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NicoVIII.RunHelpers" Version="0.6.0" />
+    <PackageReference Include="NicoVIII.RunHelpers" Version="1.0.0" />
     <PackageReference Include="Fake.IO.FileSystem" Version="6.1.3" />
   </ItemGroup>
 
