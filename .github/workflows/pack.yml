@@ -1,5 +1,8 @@
 name: Pack
 
+permissions:
+  contents: write
+
 on:
   push:
     tags:
