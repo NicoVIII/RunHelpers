@@ -29,8 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="FSharp.Core" Version="8.0.100" />
-    <PackageReference Include="Fake.Core.Process" Version="[6.0.0, 7)" />
+    <PackageReference Update="FSharp.Core" Version="9.0.300" />
+    <PackageReference Include="Fake.Core.Process" Version="[6.1.3, 7.0.0)" />
   </ItemGroup>
 
 </Project>
