@@ -1,0 +1,33 @@
+# RunHelpers
+
+## Docs
+
+- [RunHelpers](https://nicoviii.github.io/RunHelpers/index.md)
+## API Reference
+
+- [RunHelpers](https://nicoviii.github.io/RunHelpers/reference/runhelpers.html)
+- [RunHelpers.Templates](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates.html)
+- [BasicShortcuts](https://nicoviii.github.io/RunHelpers/reference/runhelpers-basicshortcuts.html)
+- [Builder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder.html)
+- [BaseJobBuilder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-basejobbuilder.html)
+- [Delayed<'a>](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-delayed-1.html)
+- [DelayedResult](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-delayedresult.html)
+- [ParallelJobBuilder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html)
+- [SequentialJobBuilder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html)
+- [Job](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html)
+- [Shortcuts](https://nicoviii.github.io/RunHelpers/reference/runhelpers-shortcuts.html)
+- [Watch](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch.html)
+- [FileSystemWatcherList](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-filesystemwatcherlistmodule.html)
+- [WatcherOptions](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptionsmodule.html)
+- [FileSystemWatcherList](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-filesystemwatcherlist.html)
+- [WatcherOptions](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptions.html)
+- [Job](https://nicoviii.github.io/RunHelpers/reference/runhelpers-job.html)
+- [JobResult](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobresult.html)
+- [DotNet](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html)
+- [DotNetConfig](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfigmodule.html)
+- [DotNetOS](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetosmodule.html)
+- [Npm](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-npm.html)
+- [Paket](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-paket.html)
+- [Pnpm](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-pnpm.html)
+- [DotNetConfig](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfig.html)
+- [DotNetOS](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetos.html)

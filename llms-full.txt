@@ -1,0 +1,637 @@
+# RunHelpers
+
+## Docs
+
+### [RunHelpers](https://nicoviii.github.io/RunHelpers/index.md)
+
+RunHelpers
+
+This is a library which should help by creating build scripts for your projects in F#.
+There is no real documentation for this right now. You can have a look at the api
+reference, at the dependents and the use in this project to get a feeling how this is used.
+There are dotnet templates available to get you started:
+dotnet new -i NicoVIII.RunHelpers.Templates
+dotnet new <template-name>
+
+## API Reference
+
+### [RunHelpers](https://nicoviii.github.io/RunHelpers/reference/runhelpers.html)
+
+BasicShortcuts 
+Builder 
+Job 
+Shortcuts 
+Watch 
+Job 
+JobResult
+
+### [RunHelpers.Templates](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates.html)
+
+DotNet 
+DotNetConfig 
+DotNetOS 
+Npm 
+Paket 
+Pnpm 
+DotNetConfig 
+DotNetOS
+
+### [BasicShortcuts](https://nicoviii.github.io/RunHelpers/reference/runhelpers-basicshortcuts.html)
+
+BasicShortcuts 
+ 
+BasicShortcuts.cmd 
+cmd
+
+### [BasicShortcuts.cmd](https://nicoviii.github.io/RunHelpers/reference/runhelpers-basicshortcuts.html#cmd)
+
+BasicShortcuts.cmd 
+cmd
+
+### [Builder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder.html)
+
+Builder 
+ 
+Builder.BaseJobBuilder 
+BaseJobBuilder 
+Builder.Delayed<'a> 
+Delayed<'a> 
+Builder.DelayedResult 
+DelayedResult 
+Builder.ParallelJobBuilder 
+ParallelJobBuilder 
+Builder.SequentialJobBuilder 
+SequentialJobBuilder 
+Builder.job 
+job 
+Builder.parallelJob 
+parallelJob
+
+### [Builder.job](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder.html#job)
+
+Builder.job 
+job
+
+### [Builder.parallelJob](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder.html#parallelJob)
+
+Builder.parallelJob 
+parallelJob
+
+### [BaseJobBuilder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-basejobbuilder.html)
+
+BaseJobBuilder 
+ 
+BaseJobBuilder.``.ctor`` 
+``.ctor`` 
+BaseJobBuilder.Zero 
+Zero
+
+### [BaseJobBuilder.``.ctor``](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-basejobbuilder.html#``.ctor``)
+
+BaseJobBuilder.``.ctor`` 
+``.ctor``
+
+### [BaseJobBuilder.Zero](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-basejobbuilder.html#Zero)
+
+BaseJobBuilder.Zero 
+Zero
+
+### [Delayed<'a>](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-delayed-1.html)
+
+Delayed<'a>
+
+### [DelayedResult](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-delayedresult.html)
+
+DelayedResult
+
+### [ParallelJobBuilder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html)
+
+ParallelJobBuilder 
+ 
+ParallelJobBuilder.``.ctor`` 
+``.ctor`` 
+ParallelJobBuilder.Combine 
+Combine 
+ParallelJobBuilder.Combine 
+Combine 
+ParallelJobBuilder.Delay 
+Delay 
+ParallelJobBuilder.For 
+For 
+ParallelJobBuilder.Run 
+Run 
+ParallelJobBuilder.Yield 
+Yield
+
+### [ParallelJobBuilder.``.ctor``](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html#``.ctor``)
+
+ParallelJobBuilder.``.ctor`` 
+``.ctor``
+
+### [ParallelJobBuilder.Combine](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html#Combine)
+
+ParallelJobBuilder.Combine 
+Combine
+
+### [ParallelJobBuilder.Combine](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html#Combine)
+
+ParallelJobBuilder.Combine 
+Combine
+
+### [ParallelJobBuilder.Delay](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html#Delay)
+
+ParallelJobBuilder.Delay 
+Delay
+
+### [ParallelJobBuilder.For](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html#For)
+
+ParallelJobBuilder.For 
+For
+
+### [ParallelJobBuilder.Run](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html#Run)
+
+ParallelJobBuilder.Run 
+Run
+
+### [ParallelJobBuilder.Yield](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-paralleljobbuilder.html#Yield)
+
+ParallelJobBuilder.Yield 
+Yield
+
+### [SequentialJobBuilder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html)
+
+SequentialJobBuilder 
+ 
+SequentialJobBuilder.``.ctor`` 
+``.ctor`` 
+SequentialJobBuilder.Combine 
+Combine 
+SequentialJobBuilder.Delay 
+Delay 
+SequentialJobBuilder.For 
+For 
+SequentialJobBuilder.Run 
+Run 
+SequentialJobBuilder.Yield 
+Yield 
+SequentialJobBuilder.Yield 
+Yield
+
+### [SequentialJobBuilder.``.ctor``](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html#``.ctor``)
+
+SequentialJobBuilder.``.ctor`` 
+``.ctor``
+
+### [SequentialJobBuilder.Combine](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html#Combine)
+
+SequentialJobBuilder.Combine 
+Combine
+
+### [SequentialJobBuilder.Delay](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html#Delay)
+
+SequentialJobBuilder.Delay 
+Delay
+
+### [SequentialJobBuilder.For](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html#For)
+
+SequentialJobBuilder.For 
+For
+
+### [SequentialJobBuilder.Run](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html#Run)
+
+SequentialJobBuilder.Run 
+Run
+
+### [SequentialJobBuilder.Yield](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html#Yield)
+
+SequentialJobBuilder.Yield 
+Yield
+
+### [SequentialJobBuilder.Yield](https://nicoviii.github.io/RunHelpers/reference/runhelpers-builder-sequentialjobbuilder.html#Yield)
+
+SequentialJobBuilder.Yield 
+Yield
+
+### [Job](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html)
+
+Job 
+ 
+Job.errorExitCode 
+errorExitCode 
+Job.ok 
+ok 
+Job.error 
+error 
+Job.allowFailure 
+allowFailure 
+Job.create 
+create 
+Job.execute 
+execute 
+Job.fromCreateProcess 
+fromCreateProcess
+
+### [Job.errorExitCode](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html#errorExitCode)
+
+Job.errorExitCode 
+errorExitCode
+
+### [Job.ok](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html#ok)
+
+Job.ok 
+ok
+
+### [Job.error](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html#error)
+
+Job.error 
+error
+
+### [Job.allowFailure](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html#allowFailure)
+
+Job.allowFailure 
+allowFailure
+
+### [Job.create](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html#create)
+
+Job.create 
+create
+
+### [Job.execute](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html#execute)
+
+Job.execute 
+execute 
+ Prints error messages and returns exit code
+
+### [Job.fromCreateProcess](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobmodule.html#fromCreateProcess)
+
+Job.fromCreateProcess 
+fromCreateProcess 
+ Creates a job from a FAKE CreateProcess instance
+
+### [Shortcuts](https://nicoviii.github.io/RunHelpers/reference/runhelpers-shortcuts.html)
+
+Shortcuts 
+ 
+Shortcuts.dotnet 
+dotnet 
+Shortcuts.fable 
+fable 
+Shortcuts.paket 
+paket 
+Shortcuts.npm 
+npm 
+Shortcuts.pnpm 
+pnpm
+
+### [Shortcuts.dotnet](https://nicoviii.github.io/RunHelpers/reference/runhelpers-shortcuts.html#dotnet)
+
+Shortcuts.dotnet 
+dotnet
+
+### [Shortcuts.fable](https://nicoviii.github.io/RunHelpers/reference/runhelpers-shortcuts.html#fable)
+
+Shortcuts.fable 
+fable
+
+### [Shortcuts.paket](https://nicoviii.github.io/RunHelpers/reference/runhelpers-shortcuts.html#paket)
+
+Shortcuts.paket 
+paket
+
+### [Shortcuts.npm](https://nicoviii.github.io/RunHelpers/reference/runhelpers-shortcuts.html#npm)
+
+Shortcuts.npm 
+npm
+
+### [Shortcuts.pnpm](https://nicoviii.github.io/RunHelpers/reference/runhelpers-shortcuts.html#pnpm)
+
+Shortcuts.pnpm 
+pnpm
+
+### [Watch](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch.html)
+
+Watch 
+ Contains helpers to setup watch commands 
+Watch.FileSystemWatcherList 
+FileSystemWatcherList 
+Watch.WatcherOptions 
+WatcherOptions 
+Watch.FileSystemWatcherList 
+FileSystemWatcherList 
+Watch.WatcherOptions 
+WatcherOptions 
+Watch.setupWatcher 
+setupWatcher
+
+### [Watch.setupWatcher](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch.html#setupWatcher)
+
+Watch.setupWatcher 
+setupWatcher
+
+### [FileSystemWatcherList](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-filesystemwatcherlistmodule.html)
+
+FileSystemWatcherList 
+ 
+FileSystemWatcherList.create 
+create 
+FileSystemWatcherList.combine 
+combine
+
+### [FileSystemWatcherList.create](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-filesystemwatcherlistmodule.html#create)
+
+FileSystemWatcherList.create 
+create
+
+### [FileSystemWatcherList.combine](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-filesystemwatcherlistmodule.html#combine)
+
+FileSystemWatcherList.combine 
+combine
+
+### [WatcherOptions](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptionsmodule.html)
+
+WatcherOptions 
+ 
+WatcherOptions.create 
+create 
+WatcherOptions.excludeFolders 
+excludeFolders 
+WatcherOptions.excludeFolder 
+excludeFolder 
+WatcherOptions.withoutSubdirectories 
+withoutSubdirectories
+
+### [WatcherOptions.create](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptionsmodule.html#create)
+
+WatcherOptions.create 
+create
+
+### [WatcherOptions.excludeFolders](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptionsmodule.html#excludeFolders)
+
+WatcherOptions.excludeFolders 
+excludeFolders
+
+### [WatcherOptions.excludeFolder](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptionsmodule.html#excludeFolder)
+
+WatcherOptions.excludeFolder 
+excludeFolder
+
+### [WatcherOptions.withoutSubdirectories](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptionsmodule.html#withoutSubdirectories)
+
+WatcherOptions.withoutSubdirectories 
+withoutSubdirectories
+
+### [FileSystemWatcherList](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-filesystemwatcherlist.html)
+
+FileSystemWatcherList 
+ Helpertype for multiple FileSystemWatchers 
+FileSystemWatcherList.watchers 
+watchers
+
+### [FileSystemWatcherList.watchers](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-filesystemwatcherlist.html#watchers)
+
+FileSystemWatcherList.watchers 
+watchers
+
+### [WatcherOptions](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptions.html)
+
+WatcherOptions 
+ 
+WatcherOptions.includeSubdirectories 
+includeSubdirectories 
+WatcherOptions.excludeFolders 
+excludeFolders
+
+### [WatcherOptions.includeSubdirectories](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptions.html#includeSubdirectories)
+
+WatcherOptions.includeSubdirectories 
+includeSubdirectories
+
+### [WatcherOptions.excludeFolders](https://nicoviii.github.io/RunHelpers/reference/runhelpers-watch-watcheroptions.html#excludeFolders)
+
+WatcherOptions.excludeFolders 
+excludeFolders
+
+### [Job](https://nicoviii.github.io/RunHelpers/reference/runhelpers-job.html)
+
+Job
+
+### [JobResult](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobresult.html)
+
+JobResult 
+ 
+JobResult.IsError 
+IsError 
+JobResult.IsOk 
+IsOk 
+JobResult.Ok 
+Ok 
+JobResult.Error 
+Error
+
+### [JobResult.IsError](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobresult.html#IsError)
+
+JobResult.IsError 
+IsError
+
+### [JobResult.IsOk](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobresult.html#IsOk)
+
+JobResult.IsOk 
+IsOk
+
+### [JobResult.Ok](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobresult.html#Ok)
+
+JobResult.Ok 
+Ok
+
+### [JobResult.Error](https://nicoviii.github.io/RunHelpers/reference/runhelpers-jobresult.html#Error)
+
+JobResult.Error 
+Error
+
+### [DotNet](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html)
+
+DotNet 
+ 
+DotNet.toolRestore 
+toolRestore 
+DotNet.restore 
+restore 
+DotNet.restoreWithTools 
+restoreWithTools 
+DotNet.build 
+build 
+DotNet.run 
+run 
+DotNet.pack 
+pack 
+DotNet.publishSelfContained 
+publishSelfContained
+
+### [DotNet.toolRestore](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html#toolRestore)
+
+DotNet.toolRestore 
+toolRestore
+
+### [DotNet.restore](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html#restore)
+
+DotNet.restore 
+restore
+
+### [DotNet.restoreWithTools](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html#restoreWithTools)
+
+DotNet.restoreWithTools 
+restoreWithTools
+
+### [DotNet.build](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html#build)
+
+DotNet.build 
+build
+
+### [DotNet.run](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html#run)
+
+DotNet.run 
+run
+
+### [DotNet.pack](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html#pack)
+
+DotNet.pack 
+pack
+
+### [DotNet.publishSelfContained](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnet.html#publishSelfContained)
+
+DotNet.publishSelfContained 
+publishSelfContained
+
+### [DotNetConfig](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfigmodule.html)
+
+DotNetConfig 
+ 
+DotNetConfig.toString 
+toString
+
+### [DotNetConfig.toString](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfigmodule.html#toString)
+
+DotNetConfig.toString 
+toString
+
+### [DotNetOS](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetosmodule.html)
+
+DotNetOS 
+ 
+DotNetOS.toString 
+toString
+
+### [DotNetOS.toString](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetosmodule.html#toString)
+
+DotNetOS.toString 
+toString
+
+### [Npm](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-npm.html)
+
+Npm 
+ 
+Npm.install 
+install 
+Npm.installWithPrefix 
+installWithPrefix
+
+### [Npm.install](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-npm.html#install)
+
+Npm.install 
+install
+
+### [Npm.installWithPrefix](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-npm.html#installWithPrefix)
+
+Npm.installWithPrefix 
+installWithPrefix
+
+### [Paket](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-paket.html)
+
+Paket 
+ 
+Paket.pack 
+pack
+
+### [Paket.pack](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-paket.html#pack)
+
+Paket.pack 
+pack
+
+### [Pnpm](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-pnpm.html)
+
+Pnpm 
+ 
+Pnpm.install 
+install
+
+### [Pnpm.install](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-pnpm.html#install)
+
+Pnpm.install 
+install
+
+### [DotNetConfig](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfig.html)
+
+DotNetConfig 
+ 
+DotNetConfig.IsDebug 
+IsDebug 
+DotNetConfig.IsRelease 
+IsRelease 
+DotNetConfig.Debug 
+Debug 
+DotNetConfig.Release 
+Release
+
+### [DotNetConfig.IsDebug](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfig.html#IsDebug)
+
+DotNetConfig.IsDebug 
+IsDebug
+
+### [DotNetConfig.IsRelease](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfig.html#IsRelease)
+
+DotNetConfig.IsRelease 
+IsRelease
+
+### [DotNetConfig.Debug](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfig.html#Debug)
+
+DotNetConfig.Debug 
+Debug
+
+### [DotNetConfig.Release](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetconfig.html#Release)
+
+DotNetConfig.Release 
+Release
+
+### [DotNetOS](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetos.html)
+
+DotNetOS 
+ 
+DotNetOS.IsLinuxX64 
+IsLinuxX64 
+DotNetOS.IsWindowsX64 
+IsWindowsX64 
+DotNetOS.WindowsX64 
+WindowsX64 
+DotNetOS.LinuxX64 
+LinuxX64
+
+### [DotNetOS.IsLinuxX64](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetos.html#IsLinuxX64)
+
+DotNetOS.IsLinuxX64 
+IsLinuxX64
+
+### [DotNetOS.IsWindowsX64](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetos.html#IsWindowsX64)
+
+DotNetOS.IsWindowsX64 
+IsWindowsX64
+
+### [DotNetOS.WindowsX64](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetos.html#WindowsX64)
+
+DotNetOS.WindowsX64 
+WindowsX64
+
+### [DotNetOS.LinuxX64](https://nicoviii.github.io/RunHelpers/reference/runhelpers-templates-dotnetos.html#LinuxX64)
+
+DotNetOS.LinuxX64 
+LinuxX64
+
